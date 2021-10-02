@@ -11,42 +11,9 @@ trait HasProducts
   {
     return $this->morphMany(Product::class, 'categoryable');
   }
-  public function creats()
+
+  public function productCreats()
   {
-   
- return $this->morphMany(Product::class, 'creatable');
-  
+    return $this->morphMany(Product::class, 'creatable');
   }
-
-  
-
-
-
-
- 
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

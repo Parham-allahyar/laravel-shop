@@ -7,7 +7,7 @@ use Product\Database\Models\Product;
 
 //User Login
 // Route::Post('login/user', [OrderController::class, 'login']);
-Route::GET('dfs', [OrderController::class, 'index']);
+Route::GET('orders', [OrderController::class, 'index']);
 Route::GET('/order/store', [OrderController::class, 'store']);
 // Route::GET('users', [UserController::class, 'index']);
 // Route::Ghandle

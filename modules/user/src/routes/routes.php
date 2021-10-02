@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Route;
 Route::Post('login/user', [UserController::class, 'login']);
 Route::Post('login/code', [UserController::class, 'auth']);
 Route::GET('users', [UserController::class, 'index']);
-
-//Error
+//User Info
 Route::GET('user/info/{id}', [UserController::class, 'userInfo']);
-
 Route::POST('user/update', [UserController::class, 'update']);
+Route::GET('user/comments', [UserController::class, 'userComments']);
+Route::GET('user/orders', [UserController::class, 'userOrders']);

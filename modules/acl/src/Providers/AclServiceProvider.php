@@ -5,9 +5,10 @@ namespace Acl\Providers;
 use Illuminate\Support\ServiceProvider;
 use Acl\Http\Middleware\PermissionMiddleware;
 use Acl\Http\Middleware\RoleMiddleware;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
-use Acl\Database\Models\Permission;
+
+use Acl\Responses\JsonResponse;
+use Acl\Repositorie\RoleRepository;
+use Acl\Repositorie\PermissionRepository;
 
 class AclServiceProvider extends ServiceProvider
 {
@@ -27,5 +28,25 @@ class AclServiceProvider extends ServiceProvider
 
     public function register()
     {
+        $this->roleProvider();
+        $this->PermissionProvider();
     }
+
+
+    public function roleProvider()
+    {
+        $this->app->bind('roleProviderFacade', function () {
+            return new RoleRepository() ;
+        });
+    }
+
+    public function PermissionProvider()
+    {
+        $this->app->bind('permissionProviderFacade', function () {
+            return new PermissionRepository() ;
+        });
+    }
+
+  
+
 }

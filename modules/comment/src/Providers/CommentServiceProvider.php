@@ -3,6 +3,9 @@
 namespace Comment\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Comment\Facade\commentProviderFacade;
+use Comment\Repositorie\CommentRepository;
+
 
 class CommentServiceProvider extends ServiceProvider
 {
@@ -16,5 +19,13 @@ class CommentServiceProvider extends ServiceProvider
 
     public function register()
     {
+        $this->commentProvider();
+    }
+
+    public function commentProvider()
+    {
+        $this->app->bind('commentProviderFacade', function () {
+            return new CommentRepository();
+        });
     }
 }

@@ -19,15 +19,15 @@ class RoleRepository
 
     public function getAllRole()
     {
-        return Role::with('childs')->where('parent_id', 0)->get();
+        return Role::all();
     }
 
-    public function CreateRole($name, $parent_id)
+    public function CreateRole($name, $description,$guard)
     {
-       
         Role::create([
             'name' => $name,
-            'parent_id' => $parent_id,
+            'description' => $description,
+            'guard'=> $guard
         ]);
     }
 

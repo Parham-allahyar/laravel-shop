@@ -7,8 +7,8 @@ use User\Facade\userProviderFacade;
 use User\Facade\storeCodeFacade;
 use User\Facade\ResponderFacade;
 use User\Facade\TokenFacade;
-use Notification\Facade\notificationFacade;
 use User\Http\Requests\UserRequest;
+
 
 
 class UserController extends Controller
@@ -22,9 +22,26 @@ class UserController extends Controller
 
     public function userInfo($id)
     {
-        // $user = User::where('id', $id)->with('creats')->with('addresses')->get();
+        $user = userProviderFacade::getUserInfo($id);
+        return $user;
+        return  ResponderFacade::getAllUsers($user);
+    }
+
+    public function userComments()
+    {
+
+        return userProviderFacade::getUserComments();
+        //$user = User::where('id', $id)->with('creats')->with('addresses')->get();
         // return new UserResource($user);
     }
+
+    public function userOrders()
+    {
+        $userOrders = userProviderFacade::getUserOrders();
+        return  ResponderFacade::responseUserOrders($userOrders);
+    }
+
+
 
     public function update(UserRequest $request)
     {

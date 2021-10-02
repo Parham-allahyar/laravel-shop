@@ -11,7 +11,10 @@ class UserRepository
     {
         return User::all();
     }
-
+    public function getUserInfo($id)
+    {
+      return User::where('id',$id)->with(['userAddresses','commentcreats'])->get();  
+    }
     public function getUserById($id)
     {
         return User::where('id', $id)
@@ -24,7 +27,20 @@ class UserRepository
         return !$user->exists ? Null : $user;
     }
 
+    public function getUserComments()
+    {
+        $user = Auth::user();
+        $user = User::find(1);
 
+        return $user->Commentcreats()->get();
+    }
+
+    public function getUserOrders()
+    {
+        $user = Auth::user();
+        $user = User::find(1);
+        return $user->Ordercreats()->get();
+    }
 
     public function getUserIdByPhoneNumber($phoneNumber)
     {
@@ -36,16 +52,16 @@ class UserRepository
 
     public function update($data)
     {
-        
 
-            $user = Auth::user();
-            $user->update([
-                'first_name' => $data['first_name'],
-                'last_name' => $data['last_name'],
-                'email' => $data['email'],
-                'phone_number' => $data['phone_number'],
-            ]);
-        
-            return !$user->wasChanged() ? false : true;
+
+        $user = Auth::user();
+        $user->update([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'email' => $data['email'],
+            'phone_number' => $data['phone_number'],
+        ]);
+
+        return !$user->wasChanged() ? false : true;
     }
 }

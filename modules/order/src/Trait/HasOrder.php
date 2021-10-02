@@ -6,8 +6,13 @@ use Order\Database\Models\Order;
 
 trait HasOrder
 {
-    public function orders()
+    public function ordercreats()
     {
         return $this->morphToMany(Order::class, 'orderable');
     }
+
+
+
+
+    
 }

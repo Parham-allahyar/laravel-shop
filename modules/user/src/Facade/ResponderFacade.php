@@ -11,13 +11,6 @@ class ResponderFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {
-
-        $request = request('client');
-
-        if ($request == 'html') {
-            return HtmlRes::class;
-        }
-
         return JsonResponse::class;
     }
 }

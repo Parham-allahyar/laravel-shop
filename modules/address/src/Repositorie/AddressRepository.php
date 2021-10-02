@@ -4,6 +4,7 @@ namespace Address\Repositorie;
 
 use  Address\Database\Models\Address;
 use Illuminate\Support\Facades\Auth;
+use User\Database\Models\User;
 
 class AddressRepository
 {
@@ -18,22 +19,24 @@ class AddressRepository
         return Address::all();
     }
 
-    public function CreateAddress(array $data) :bool
-    {
-        $user = Auth::user()->addresses()->create($data);
-        return !$user->exists ? false : true;
-    }
-
-
-    public function userAddress()
+    public function CreateAddress(array $data): bool
     {
         $user = Auth::user();
-        $userClass = get_class($user);
-        return Address::where('addressable_id', $user->id)
-            ->where('addressable_type', $userClass)
-            ->get();
+        $user = User::find(1);
+        dd($user);
+        $userAddress = $user->userAddresses()->create($data);
+        return !$userAddress->exists ? false : true;
     }
-    public function UpdateAddressById($id, array $data) :bool
+
+
+    public function getUserAddress()
+    {
+        $user =  Auth::user();
+        $user =  User::find(1);
+        $address = Address::where('addressable_id', $user->id)->get();
+        return $address;
+    }
+    public function UpdateAddressById($id, array $data): bool
     {
         $address = Address::find($id);
         $address->update($data);
@@ -44,6 +47,5 @@ class AddressRepository
     public function DeleteAddressById($id)
     {
         $this->getAddressById($id)->delete();
-       
     }
 }

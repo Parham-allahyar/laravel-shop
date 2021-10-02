@@ -12,26 +12,27 @@ class PermissionRepository
         return Permission::find($id);
     }
 
-    public function getAllPermission()
+    public function getAllPermissions()
     {
-        return Permission::with('childs')->where('parent_id', 0)->get();
+        return Permission::all();
     }
 
-    public function CreatePermission($name, $parent_id)
+    public function CreatePermission($name, $description, $guard)
     {
-        
+
 
         Permission::create([
             'name' => $name,
-            'description' => $parent_id,
+            'description' => $description,
+            'guard' => $guard
         ]);
     }
 
 
-    public function UpdatePermissionById($id,$name,$parent_id)
+    public function UpdatePermissionById($id, $name, $parent_id)
     {
         $category = $this->getPermissionById($id);
-        $category->update(['name' => $name, 'parent_id' => $parent_id ]);
+        $category->update(['name' => $name, 'parent_id' => $parent_id]);
     }
 
 

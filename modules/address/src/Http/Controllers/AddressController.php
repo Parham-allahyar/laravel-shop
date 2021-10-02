@@ -18,6 +18,15 @@ class AddressController extends Controller
         return ResponderFacade::index($addresss);
     }
 
+
+
+    public function userAddress()
+    {
+        $addresss = addressProviderFacade::getUserAddress();
+        return ResponderFacade::index($addresss);
+    }
+
+
     public function store(AddressRequest  $request)
     {
 
@@ -44,18 +53,30 @@ class AddressController extends Controller
 
     public function update(AddressRequest $request, $id)
     {
-        $data = [
-            'city'        => $request->city,
-            'province'    => $request->province,
-            'street'      => $request->street,
-            'alley'       => $request->alley,
-            'plaque'      => $request->plaque,
-            'description' => $request->description,
-            'zip_code'    => $request->zip_code,
-        ];
 
-        $addressIsUpdated = AddressProviderFacade::UpdateAddressById($id, $data);
-        return $addressIsUpdated ? ResponderFacade::UpdatesResponse() : ResponderFacade::FaildResponse();
+
+
+        // $product = auth()->user()->creats()
+        // ->make(['name' => $name, 'price' => $price, 'quantity' => $quantity, 'description' => $description])
+        // ->categoryable()->associate($category)->save();
+
+
+
+
+
+
+        // $data = [
+        //     'city'        => $request->city,
+        //     'province'    => $request->province,
+        //     'street'      => $request->street,
+        //     'alley'       => $request->alley,
+        //     'plaque'      => $request->plaque,
+        //     'description' => $request->description,
+        //     'zip_code'    => $request->zip_code,
+        // ];
+
+        // $addressIsUpdated = AddressProviderFacade::UpdateAddressById($id, $data);
+        // return $addressIsUpdated ? ResponderFacade::UpdatesResponse() : ResponderFacade::FaildResponse();
     }
 
     public function destroy($id)
@@ -64,10 +85,10 @@ class AddressController extends Controller
         return ResponderFacade::DeletedResponse();
     }
 
-    public function userAddress()
-    {
-        $address = AddressProviderFacade::userAddress();
+    // public function userAddress()
+    // {
+    //     $address = AddressProviderFacade::userAddress();
 
-        return ResponderFacade::userAddressResponse($address);
-    }
+    //     return ResponderFacade::userAddressResponse($address);
+    // }
 }

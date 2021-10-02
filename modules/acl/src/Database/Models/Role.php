@@ -12,6 +12,7 @@ use Admin\Database\Models\Admin;
 
 class Role extends Model
 {
+    protected $fillable = ['name', 'description', 'guard'];   
     use HasFactory;
     public function permissions()
     {

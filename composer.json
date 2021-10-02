@@ -67,6 +67,7 @@
         "shop/product": "dev-master",
         "shop/seller": "dev-master",
         "shop/user": "dev-master",
+        "spatie/laravel-permission": "^4.2",
         "tymon/jwt-auth": "^1.0.2"
     },
     "require-dev": {

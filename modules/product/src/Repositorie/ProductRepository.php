@@ -5,7 +5,9 @@ namespace Product\Repositorie;
 use Product\Database\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Category\Database\Models\Category;
-
+use Product\Database\Models\Attribute;
+use Seller\Database\Models\Seller;
+use Illuminate\Http\Request;
 
 class ProductRepository
 {
@@ -23,14 +25,42 @@ class ProductRepository
     return Product::all();
   }
 
-
-  public function SellerCanCreateProduct($quantity, $name, $price, $description, $category_id)
+  protected function attachAttributesToProduct($product)
   {
-    //TODO:Refactor -> category Trait
-    $category = Category::find($category_id);
-    $product = auth('seller')->user()->creats()
-      ->make(['name' => $name, 'price' => $price, 'quantity' => $quantity, 'description' => $description])
+
+    //$attributes = collect($validData['attributes']);
+    $attributes = collect(['ram' => "8gb", 'colore' => "red", 'HDD' => "200GB",'brand' => "apple"]);
+
+    $attributes->each(function ($a,$b) {
+
+      $attr = Attribute::firstOrCreate(
+        ['name' => $b]
+      );
+
+      $attr_value = $attr->values()->firstOrCreate(
+        ['value' => $a]
+      );
+    });
+  }
+  public function SellerCanCreateProduct(Request $request)
+  {
+
+
+    $validData = $request->validate([
+      'name' => 'required',
+      'description' => 'required',
+      'price' => 'required',
+      'attributes' => 'array'
+    ]);
+     dd($validData);
+    $category = Category::find(1);
+    // $user = Seller::find(1);
+    $product = Seller::find(1)->productCreats()->make($validData)
       ->categoryable()->associate($category)->save();
+
+
+    $this->attachAttributesToProduct($product);
+    dd("km");
   }
 
   public function AdminCanCreateProduct($quantity, $name, $price, $description, $category_id)

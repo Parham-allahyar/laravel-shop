@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b01d9ee83fe7f69e028c7ba504b32186",
+    "content-hash": "4d911d0e002c76633e4f44dd779a708d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -559,16 +559,16 @@
         },
         {
             "name": "ghasedak/php",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ghasedakapi/ghasedak-php.git",
-                "reference": "a487875c607283177fc4cfd61a3b090d297f64d1"
+                "reference": "b5fb1ff4a5acde89e4354a846d35fe76e53e4d3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ghasedakapi/ghasedak-php/zipball/a487875c607283177fc4cfd61a3b090d297f64d1",
-                "reference": "a487875c607283177fc4cfd61a3b090d297f64d1",
+                "url": "https://api.github.com/repos/ghasedakapi/ghasedak-php/zipball/b5fb1ff4a5acde89e4354a846d35fe76e53e4d3c",
+                "reference": "b5fb1ff4a5acde89e4354a846d35fe76e53e4d3c",
                 "shasum": ""
             },
             "require": {
@@ -601,9 +601,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ghasedakapi/ghasedak-php/issues",
-                "source": "https://github.com/ghasedakapi/ghasedak-php/tree/v1.0.0"
+                "source": "https://github.com/ghasedakapi/ghasedak-php/tree/v1.0.1"
             },
-            "time": "2020-10-06T13:19:05+00:00"
+            "time": "2021-06-24T08:28:11+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -2979,6 +2979,84 @@
             "transport-options": {
                 "relative": true
             }
+        },
+        {
+            "name": "spatie/laravel-permission",
+            "version": "4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-permission.git",
+                "reference": "a6e4122b65094baba7f98df153af0768ef910c85"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/a6e4122b65094baba7f98df153af0768ef910c85",
+                "reference": "a6e4122b65094baba7f98df153af0768ef910c85",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/auth": "^6.0|^7.0|^8.0",
+                "illuminate/container": "^6.0|^7.0|^8.0",
+                "illuminate/contracts": "^6.0|^7.0|^8.0",
+                "illuminate/database": "^6.0|^7.0|^8.0",
+                "php": "^7.2.5|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0|^5.0|^6.0",
+                "phpunit/phpunit": "^8.0|^9.0",
+                "predis/predis": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Permission\\PermissionServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Permission\\": "src"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Permission handling for Laravel 6.0 and up",
+            "homepage": "https://github.com/spatie/laravel-permission",
+            "keywords": [
+                "acl",
+                "laravel",
+                "permission",
+                "permissions",
+                "rbac",
+                "roles",
+                "security",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-permission/issues",
+                "source": "https://github.com/spatie/laravel-permission/tree/4.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-06-04T23:47:08+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -8167,5 +8245,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }

@@ -12,15 +12,28 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $allCategorys = categoryProviderFacade::getAllCategory();
+        $allCategorys = categoryProviderFacade::getCategorys();
         return ResponderFacade::allCategoryResponse($allCategorys);
     }
-
+    public function parentCategorys()
+    {
+        $parentCategorys = categoryProviderFacade::getParentCategorys();
+        return ResponderFacade::allCategoryResponse($parentCategorys);
+    }
+    public function productsCategory($id)
+    {
+        $products = categoryProviderFacade::getCategoryProducts($id);
+        return ResponderFacade::allCategoryResponse($products);
+    }
+    public function childCategorys($id)
+    {
+        $childCategorys = categoryProviderFacade::getChildCategorys($id);
+        return ResponderFacade::allCategoryResponse($childCategorys);
+    }
     public function store(CategoryRequest $request)
     {
-       
-       $categoryIsCreated = categoryProviderFacade::CreateCategory($request->name, $request->parent_id);
-       return $categoryIsCreated ? ResponderFacade::CreatedResponse() : ResponderFacade::FaildResponse();
+        $categoryIsCreated = categoryProviderFacade::CreateCategory($request->name, $request->parent_id);
+        return $categoryIsCreated ? ResponderFacade::CreatedResponse() : ResponderFacade::FaildResponse();
     }
 
     public function edit($id)
@@ -29,7 +42,7 @@ class CategoryController extends Controller
         return $categoryIsUpdated ? ResponderFacade::EditResponse() : ResponderFacade::FaildResponse();
     }
 
-    public function update(CategoryRequest $request , $id)
+    public function update(CategoryRequest $request, $id)
     {
         categoryProviderFacade::UpdateCategoryById($id, $request->name, $request->parent_id);
         return ResponderFacade::UpdateResponse();

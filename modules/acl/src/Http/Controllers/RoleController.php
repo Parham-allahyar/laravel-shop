@@ -12,14 +12,16 @@ class RoleController extends Controller
 
     public function index()
     {
-        $allCategorys = roleProviderFacade::getAllCategory();
-        return ResponderFacade::allRoleResponse($allCategorys);
+        $allRoles = roleProviderFacade::getAllRole();
+       
+        return ResponderFacade::allRoleResponse($allRoles);
     }
 
     public function store(Request $request)
     {
 
-        roleProviderFacade::CreateRole($request->name, $request->parent_id);
+        
+        roleProviderFacade::CreateRole($request->name, $request->description,$request->guard);
         return ResponderFacade::CreatedResponse();
     }
 

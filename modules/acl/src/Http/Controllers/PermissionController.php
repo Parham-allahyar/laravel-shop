@@ -13,14 +13,14 @@ class PermissionController extends Controller
 
     public function index()
     {
-        $allCategorys = permissionProviderFacade::getAllCategory();
-        return ResponderFacade::allPermissionResponse($allCategorys);
+        $allPermissions = permissionProviderFacade::getAllPermissions();
+
+        return ResponderFacade::allPermissionResponse($allPermissions);
     }
 
     public function store(Request $request)
     {
-
-        permissionProviderFacade::CreatePermission($request->name, $request->parent_id);
+        permissionProviderFacade::CreatePermission($request->name, $request->description, $request->guard);
         return ResponderFacade::CreatedResponse();
     }
 

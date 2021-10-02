@@ -25,11 +25,12 @@ class ProductController extends Controller
         return ResponderFacade::productResponse($product);
     }
 
+  
     //Create Produt
     public function createBySeller(ProductRequest $request)
     {
         
-        ProductProviderFacade::SellerCanCreateProduct($request->quantity, $request->name, $request->price, $request->description);
+        ProductProviderFacade::SellerCanCreateProduct($request);
         return ResponderFacade::createdProduct();
     }
 

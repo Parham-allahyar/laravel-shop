@@ -1,15 +1,24 @@
 <?php
 
 namespace Seller\Repositorie;
-use Seller\Database\Models\Seller;
 
+use Seller\Database\Models\Seller;
 
 class SellerRepository
 {
 
-   public  $newSeller ;
+    public function getSellerInfo($id)
+    {
+        return Seller::find(1)->with(['productCreats'])->get();
+    }
 
-    public function create($data) :bool
+    public function getSellerProducts($id)
+    {
+        return Seller::find($id)->productCreats()->get();
+    }
+
+
+    public function create($data): bool
     {
         $sellerData = [
             'name' => $data['name'],
@@ -21,8 +30,8 @@ class SellerRepository
         return !$this->newSeller->exists ? false : true;
     }
 
-    public function getCreatedSellerId() :int
+    public function getCreatedSellerId(): int
     {
-        return $this->newSeller->id; 
+        return $this->newSeller->id;
     }
 }

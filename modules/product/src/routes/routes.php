@@ -9,6 +9,8 @@ use Product\Http\Controllers\ProductController;
 Route::GET('/products', [ProductController::class, 'index']);
 Route::GET('/product/{id}', [ProductController::class, 'product']);
 
+
+
 //Create Product
 Route::POST('/seller/product', [ProductController::class, 'createBySeller']);
 Route::POST('/admin/product', [ProductController::class, 'createByAdmin']);

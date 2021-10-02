@@ -3,6 +3,7 @@
 namespace Product\Database\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Product\Database\Models\Attribute;
 
 class AttributeValue extends Model
 {
@@ -10,6 +11,6 @@ class AttributeValue extends Model
 
     public function attribute()
     {
-        return $this->belongsTo(Attribute::class);
+        return $this->belongsToMany(Attribute::class, 'attribute_attributeValue_table');
     }
 }

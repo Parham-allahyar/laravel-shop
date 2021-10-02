@@ -9,6 +9,7 @@ use Seller\Facade\TokenFacade;
 use Seller\Http\Resources\SellerResource;
 use Seller\Database\Models\Seller;
 use Seller\Http\Requests\SellerRequest;
+use Seller\Facade\ResponderFacade;
 
 
 class SellerController extends Controller
@@ -18,6 +19,21 @@ class SellerController extends Controller
     public function sellers()
     {
         return new SellerResource(Seller::all());
+    }
+
+    public function sellerProducts($id)
+    {
+      
+        $products = sellerProviderFacade::getSellerProducts($id);
+        return $products;
+        //return ResponderFacade::sellerProducts($products);
+    }
+
+
+    public function sellerInfo($id)
+    {
+        $user = sellerProviderFacade::getSellerInfo($id);
+        return  ResponderFacade::getAllUsers($user);
     }
 
     public function sellerLogin(Request $request)
@@ -57,9 +73,6 @@ class SellerController extends Controller
 
         $sellerId = sellerProviderFacade::getCreatedSellerId();
         //Generate Token
-       $token = auth('seller')->tokenById($sellerId);
-      
-       
-       
+        $token = auth('seller')->tokenById($sellerId);
     }
 }

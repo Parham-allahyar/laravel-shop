@@ -11,10 +11,10 @@ trait HasComments
   {
     return $this->morphMany(Comment::class, 'commentable');
   }
-  // public function creats()
-  // {
-  //   return $this->morphMany(Comment::class, 'creatable');
-  // }
+  public function commentcreats()
+  {
+    return $this->morphMany(Comment::class, 'creatable');
+  }
 
   // public function comment(string $comment, $parentId )
   // {

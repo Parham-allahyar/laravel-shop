@@ -13,13 +13,13 @@ use Product\Trait\HasProducts;
 class Seller extends Authenticatable implements JWTSubject
 {
    
-    use HasFactory,HasPermissions,HasProducts;
+    use HasFactory,HasPermissions,HasProducts,HasComments;
     protected $guard = 'seller';
     protected $fillable = [
         'name', 'email', 'password',
     ];
 
-    public $type = "name";
+    // public $type = "name";
     protected $hidden = [
         'password', 'remember_token',
     ];

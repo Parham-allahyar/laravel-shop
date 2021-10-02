@@ -13,11 +13,13 @@ class CommentController extends Controller
     public function getCommentById($id)
     {
         commentProviderFacade::getCommentById($id);
-        
     }
 
-
-    public function getAllComment()
+    public function userComment()
+    {
+        return commentProviderFacade::getUserComment();
+    }
+    public function index()
     {
         commentProviderFacade::getAllComment();
     }
@@ -26,6 +28,5 @@ class CommentController extends Controller
     public function destroy($id)
     {
         commentProviderFacade::destroy($id);
-
     }
 }
